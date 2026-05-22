@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nipponflex | Elite Tech Performance</title>
+    <!-- Fuentes y Librería de Animación -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #050a14; /* Negro azulado profundo */
+            --accent: #2be9f3e3;  /* Cyan neón tecnológico */
+            --gold: #d4af37;    /* Dorado de victoria */
+            --text-light: #e0e6ed;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-light);
+            overflow-x: hidden;
+            /* Fondo Tecnológico: Cuadrícula y Gradiente */
+            background-image: 
+                linear-gradient(rgba(5, 10, 20, 0.8), rgba(5, 10, 20, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300f2ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Botón de Regresar al HUB */
+.btn-back-hub {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-back-hub:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+/* Flecha sutil */
+.btn-back-hub::before {
+    content: '←';
+    font-size: 1.1rem;
+}
+
+        /* --- Estilos de Componentes --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, var(--accent), #0077ff);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.6);
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- 1. Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.15) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        /* --- 2. Cards de Problema (Glassmorphism) --- */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            transition: border 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+        }
+
+        /* --- 3. Sección de Producto --- */
+        .product-flex {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .product-info, .product-media {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .tech-tag {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* --- Contacto Tech --- */
+        .contact-box {
+            background: linear-gradient(145deg, #0a1322, #050a14);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid var(--accent);
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="nipponflex.html" class="btn-back-hub">
+    VOLVER AL HUB
+    </a>
+
+    <!-- 1. Hero -->
+    <section class="hero">
+        <div class="hero-content container" data-aos="zoom-out" data-aos-duration="1500">
+            <span class="tech-tag">Engineering for Champions</span>
+            <h1>POTENCIA TU<br><span style="color:var(--accent)">RENDIMIENTO</span></h1>
+            <p style="max-width: 600px; margin: 0 auto 30px;">Recuperación acelerada y bio-tecnología de vanguardia para atletas que no aceptan límites.</p>
+            <a href="#contacto" class="btn">Activar mi Potencial</a>
+        </div>
+    </section>
+
+    <!-- 2. Problema -->
+    <section class="container">
+        <h2 data-aos="fade-up">¿Tu cuerpo te frena?</h2>
+        <div class="grid-cards">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3 style="color:var(--accent); margin-bottom:15px;">Fatiga Crónica</h3>
+                <p>El cansancio acumulado destruye tu consistencia en competencia.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3 style="color:var(--accent); margin-bottom:15px;">Micro-lesiones</h3>
+                <p>Recuperación lenta que te mantiene fuera del campo de juego.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <h3 style="color:var(--accent); margin-bottom:15px;">Bajo Enfoque</h3>
+                <p>La falta de descanso profundo afecta tu toma de decisiones tácticas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Solución / Producto -->
+    <section class="container">
+        <div class="product-flex">
+            <div class="product-media" data-aos="fade-right">
+                <div style="background: var(--accent); height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 900;">
+                    <img src="KIT-NIPPONFLEX.png" alt="">
+                </div>
+            </div>
+            <div class="product-info" data-aos="fade-left">
+                <span class="tech-tag">Nipponflex FIR Technology</span>
+                <h2>Ciencia de Recuperación</h2>
+                <p>Utilizamos tecnología de infrarrojo lejano e iones para optimizar el flujo sanguíneo mientras descansas.</p>
+                <ul style="list-style: none; margin: 25px 0;">
+                    <li style="margin-bottom: 10px;">⚡ Reducción de ácido láctico instantánea.</li>
+                    <li style="margin-bottom: 10px;">🔬 Certificación ISO de grado médico.</li>
+                    <li style="margin-bottom: 10px;">🏆 Utilizado por medallistas olímpicos.</li>
+                </ul>
+                <a href="#contacto" class="btn">Ver Estudios Científicos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Atletas de Alto Rendimiento -->
+<section class="container">
+    <!-- Encabezado de la sección -->
+    <div style="text-align: center; margin-bottom: 50px;" data-aos="fade-up">
+        <span class="tech-tag">DEPORTISTAS QUE LOS USAN</span>
+        <h2>ATLETAS DE ALTO RENDIMIENTO</h2>
+        <p style="color: var(--text-light); opacity: 0.8;">"Si ellos viven de ello, tú vives con ello."</p>
+    </div>
+
+    <!-- Grid de Atletas (Ajustado para 4 elementos) -->
+    <div class="product-flex" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+        
+        <!-- Deportista 1 -->
+        <div class="product-media" data-aos="fade-up" data-aos-delay="100">
+            <div style="background: var(--glass); border: 1px solid var(--accent); height: 450px; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img src="Deportista 1.png" alt="Atleta de Élite 1" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Deportista 2 -->
+        <div class="product-media" data-aos="fade-up" data-aos-delay="200">
+            <div style="background: var(--glass); border: 1px solid var(--accent); height: 450px; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img src="Deportista 2.png" alt="Atleta de Élite 2" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Deportista 3 -->
+        <div class="product-media" data-aos="fade-up" data-aos-delay="300">
+            <div style="background: var(--glass); border: 1px solid var(--accent); height: 450px; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img src="Deportista 3.png" alt="Atleta de Élite 3" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Deportista 4 -->
+        <div class="product-media" data-aos="fade-up" data-aos-delay="400">
+            <div style="background: var(--glass); border: 1px solid var(--accent); height: 450px; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img src="Deportista 4.png" alt="Atleta de Élite 4" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    </div>
+</section>
+            
+        </div>
+    </section>
+
+    <!-- 6. Contacto -->
+<section id="contacto" class="container">
+    <div class="contact-box" data-aos="flip-up">
+        <h2 style="margin-bottom: 20px;">Únete a la Élite</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Recibe una consultoría técnica para tu plan de entrenamiento.</p>
+        
+        <!-- Formulario conectado a tu ID de Formspree -->
+        <form action="https://formspree.io/f/xojrrjwg" method="POST">
+            
+            <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
+            
+            <input type="text" name="deporte" placeholder="Deporte de Alto Rendimiento" required>
+            
+            <input type="email" name="email" placeholder="Email Profesional" required>
+            
+            <!-- Campo de mensaje opcional para más contexto -->
+            <textarea name="mensaje" placeholder="Cuéntanos tus objetivos (opcional)" 
+                style="width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: white; border-radius: 8px; font-family: inherit; resize: none;" rows="4"></textarea>
+
+            <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">
+                Solicitar Acceso
+            </button>
+            
+        </form>
+    </div>
+</section>
+<footer style="text-align: center; padding: 40px; opacity: 0.5;">
+        <p>© 2026 EDFN - Salud y Bienestar de Calidad</p>
+    </footer>
+    
+    <!-- Scripts de Animación -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar animaciones
+        AOS.init({
+            duration: 1000, // Duración de la animación en ms
+            once: true,     // La animación ocurre solo una vez al bajar
+            offset: 200     // Distancia del scroll para activar
+        });
+    </script>
+</body>
+</html>

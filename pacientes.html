@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nipponflex | Ingeniería en Salud Integral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+
+        :root {
+            --bg-deep: #172852;
+            --bg-card: rgba(30, 41, 59, 0.5);
+            --accent-patient: #1089b9; /* Verde Medicina de Calidad */
+            --gold-soft: #c5a447;
+            --text-main: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 60px 0; }
+
+        /* Botón de Regresar al HUB */
+.btn-back-hub {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-back-hub:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+/* Flecha sutil */
+.btn-back-hub::before {
+    content: '←';
+    font-size: 1.1rem;
+}
+
+        /* --- Hero Salud --- */
+        .hero-health {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-health h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        /* --- Sección Padecimientos (Grid) --- */
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .disease-card {
+            background: var(--bg-card);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-patient);
+            transition: transform 0.3s ease;
+        }
+
+        .disease-card:hover {
+            transform: scale(1.03);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .disease-card h3 {
+            color: var(--accent-patient);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .disease-card-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ocupa el ancho disponible */
+    max-width: 400px; /* Tamaño más grande para legibilidad */
+    margin: 40px auto; /* Centrado horizontal en la página */
+    padding: 10px;
+    background: transparent; /* Eliminado el fondo de los demás */
+    border-left: none; /* Eliminado el borde lateral para limpieza visual */
+    border-radius: 0; 
+    overflow: hidden;
+}
+
+.disease-card-img img {
+    width: 100%; /* Ajuste al contenedor grande */
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    /* Sombra sutil para dar profundidad sin necesidad de fondo */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); 
+}
+
+        /* --- Sinergia Tecnológica --- */
+        .tech-box {
+            background: var(--white);
+            color: var(--bg-deep);
+            padding: 50px;
+            border-radius: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .tech-text { flex: 1; min-width: 300px; }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent-patient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* --- CTA de Salud --- */
+        .btn-health {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--accent-patient);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: box-shadow 0.3s;
+        }
+
+        .btn-health:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+    <a href="nipponflex.html" class="btn-back-hub">
+    VOLVER AL HUB
+</a>
+
+    <header class="hero-health">
+        <div class="container" data-aos="fade-down">
+            <h1 style="color: var(--accent-patient);">Soluciones para una Vida Plena</h1>
+            <p style="max-width: 700px; margin: 0 auto;">Tecnología avanzada diseñada para el soporte terapéutico y la mejora de la calidad de vida en pacientes con condiciones crónicas.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 style="text-align: center; margin-bottom: 10px;" data-aos="fade-up">Áreas de Apoyo Terapéutico</h2>
+        <p style="text-align: center; opacity: 0.7; margin-bottom: 40px;">Nuestras tecnologías actúan como auxiliares en:</p>
+        
+        <div class="disease-grid">
+            <div class="disease-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Hipertensión</h3>
+                <p>El FIR ayuda a la relajación de los vasos sanguíneos, mejorando la fluidez y la presión arterial de forma natural.</p>
+            </div>
+            <div class="disease-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Esclerosis y Parkinson</h3>
+                <p>Mejora la calidad del descanso profundo, ayudando a reducir la fatiga neuromuscular y el estrés oxidativo.</p>
+            </div>
+            <div class="disease-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>Vitíligo</h3>
+                <p>La terapia de iones negativos favorece el equilibrio sistémico y la regeneración celular desde el interior.</p>
+            </div>
+            <div class="disease-card" data-aos="fade-up" data-aos-delay="400">
+                <h3>Dolores Crónicos</h3>
+                <p>La sinergia entre Magnetismo y FIR es altamente efectiva para procesos inflamatorios y dolores articulares.</p>
+            </div>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center;">
+    <div class="disease-card-img" data-aos="zoom-in" data-aos-delay="400">
+        <img src="Captura de pantalla 2026-05-11 223148.png" alt="Información detallada de padecimientos">
+    </div>
+</div>
+    </section>
+
+    <section class="container" style="background: rgba(255,255,255,0.02); border-radius: 40px;">
+        <div class="tech-box" data-aos="zoom-in">
+            <div class="tech-text">
+                <span class="badge">NUESTRA CIENCIA</span>
+                <h2 style="color: var(--bg-deep); text-align: left; margin-bottom: 20px;">Sinergia: Magneto + FIR + Ion</h2>
+                <p>A diferencia de los métodos tradicionales, Nipponflex utiliza tres elementos esenciales de la naturaleza de manera simultánea:</p>
+                <ul style="margin: 20px 0; padding-left: 20px;">
+                    <li><strong>Magnetoterapia:</strong> Restablece la energía celular.</li>
+                    <li><strong>FIR Power:</strong> Estimula la circulación profunda.</li>
+                    <li><strong>Ion Negative:</strong> Purifica el entorno celular.</li>
+                </ul>
+                <a href="#contacto-paciente" class="btn-health">Consultar con un Especialista</a>
+            </div>
+            <div style="flex: 1; text-align: center;">
+    <div style="background: #f1f5f9; min-height: 300px; border-radius: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <img src="e6ca5cc3-ff5d-464a-a5c2-bcdcb93b32cb.jpg" 
+             alt="Infografía Técnica Sinergia Nipponflex" 
+             style="width: 100%; height: auto; display: block; object-fit: cover;">
+    </div> 
+</div>
+        </div>
+    </section>
+
+    <section id="contacto-paciente" class="container" style="text-align: center;">
+        <div data-aos="fade-up" style="max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--accent-patient);">
+            <h2>¿Deseas mejorar tu calidad de vida?</h2>
+            <p style="margin-bottom: 30px;">Déjanos tus datos para brindarte una asesoría personalizada sobre cómo Nipponflex puede ayudarte en tu caso específico.</p>
+            
+            <form action="https://formspree.io/f/xojrrjwg" method="POST" style="display: grid; gap: 15px;">
+                <input type="hidden" name="_subject" value="Nueva Consulta de Salud/Paciente">
+                <input type="text" name="nombre" placeholder="Nombre Completo" required style="padding: 12px; border-radius: 5px; border: none;">
+                <input type="text" name="padecimiento" placeholder="Padecimiento o condición" style="padding: 12px; border-radius: 5px; border: none;">
+                <input type="email" name="email" placeholder="Correo Electrónico" required style="padding: 12px; border-radius: 5px; border: none;">
+                <button type="submit" class="btn-health" style="border: none; cursor: pointer; width: 100%;">Solicitar Información Terapéutica</button>
+            </form>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; opacity: 0.5;">
+        <p>© 2026 EDFN - Salud y Bienestar de Calidad</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
